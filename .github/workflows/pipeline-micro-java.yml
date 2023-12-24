@@ -21,7 +21,8 @@ jobs:
     - name: Run Unit Tests and Check Coverage
       run: |
         ./gradlew test
-        ./gradlew jacocoTestReport
+        ./gradlew build jacocoTestReport
+        ls -ltrh
 
     - name: Check Code Coverage
       run: |
