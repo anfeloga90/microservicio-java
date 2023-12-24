@@ -49,4 +49,4 @@ jobs:
       run: |
         chmod +x gradlew
         ./gradle build sonar 
-        # -Dsonar.token=${{ secrets.TOKEN_SONARCLOUD}}
+        # -Dsonar.token=${{ secrets.TOKEN_SONARCLOUD }}
