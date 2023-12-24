@@ -24,10 +24,6 @@ jobs:
         ./gradlew build jacocoTestReport
         ls -ltrh
         ls -ltrh build
-        ls -ltrh build/reports/jacoco/test/
-        ls -ltrh build/jacocoHtml
-        cat build/reports/jacoco/test/jacocoTestReport.xml
-        echo -----
         echo -----
         cat build/jacocoHtml/index.html
 
@@ -43,7 +39,7 @@ jobs:
         porcentaje=$(echo "scale=2; ($valor_actual / $valor_total) * 100" | bc)
         echo porcentaje = $porcentaje
 
-        if [ "$COVERAGE" -lt 85 ]; then
+        if [ "$porcentaje" -lt 85 ]; then
           echo "Error: La cobertura de código es inferior al 85% (actual: $COVERAGE%)."
           exit 1
         fi
