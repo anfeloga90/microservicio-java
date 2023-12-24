@@ -25,10 +25,10 @@ jobs:
         ls -ltrh
         ls -ltrh build
         ls -ltrh build/reports/jacoco/test/
-        ls -ltrh build/reports/jacoco/test/html
+        ls -ltrh build/reports/jacoco/test/jacocoHtml
         cat build/reports/jacoco/test/jacocoTestReport.xml
         echo -----
-        cat build/reports/jacoco/test/html/index.html
+        cat build/reports/jacoco/test/jacocoHtml/index.html
 
     - name: Check Code Coverage
       run: |
