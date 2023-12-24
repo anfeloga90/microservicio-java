@@ -47,7 +47,7 @@ jobs:
 
     - name: Sonar cloud Analisis
       run: |
-        echo "inicio de analisis sonar.  "
+        echo "inicio de analisis sonar.   "
         chmod +x gradlew
         ./gradlew build sonar -Dsonar.token=${{ secrets.TOKEN_SONARCLOUD }}
 
