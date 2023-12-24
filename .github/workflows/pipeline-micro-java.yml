@@ -47,5 +47,6 @@ jobs:
 
     - name: Sonar cloud Analisis
       run: |
+        # name y key anfeloga90
         chmod +x gradlew
         ./gradlew build sonar -Dsonar.token=${{ secrets.TOKEN_SONARCLOUD }}
