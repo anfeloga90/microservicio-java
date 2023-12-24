@@ -3,6 +3,7 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 	id 'jacoco'
+	id "org.sonarqube" version "4.2.1.3168"
 }
 
 group = 'com.example'
@@ -28,4 +29,13 @@ jacocoTestReport {
 		html.enabled true
 		html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
 	}
+}
+
+sonar {
+  properties {
+    property "sonar.projectKey", ""
+    property "sonar.organization", ""
+    property "sonar.host.url", "https://sonarcloud.io/"
+    property "sonar.projectName", ""
+  }
 }
