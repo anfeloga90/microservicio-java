@@ -24,6 +24,7 @@ jobs:
         ./gradlew build jacocoTestReport
         ls -ltrh
         ls -ltrh build
+        ls -ltrh build/reports/jacoco/test/
 
     - name: Check Code Coverage
       run: |
