@@ -57,3 +57,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
+    - name: docker build
+      run: |
+        docker build --tag microservicios-java:
+        docker images
