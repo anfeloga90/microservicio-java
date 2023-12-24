@@ -44,3 +44,9 @@ jobs:
         else
           echo "Covertura de codigo exitosa. "
         fi
+
+    - name: Sonar cloud Analisis
+      run: |
+        chmod +x gradlew
+        ./gradle build sonar 
+        # -Dsonar.token=${{ secrets.TOKEN_SONARCLOUD}}
