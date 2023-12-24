@@ -30,12 +30,9 @@ jobs:
     - name: Check Code Coverage
       run: |
         COVERAGE=$(cat build/jacocoHtml/index.html | grep -oP 'Total</td><td class="bar">[^<]+' | grep -oP '[0-9]+')
-        echo COVERAGE=$COVERAGE
         # Extraer el valor actual y total
         valor_actual=$(echo $COVERAGE | cut -d'=' -f2 | cut -d' ' -f1)
         valor_total=$(echo $COVERAGE | cut -d'=' -f2 | cut -d' ' -f2)
-        echo valor_actual = $valor_actual
-        echo valor_total = $valor_total
         # Calcular el porcentaje
         porcentaje=$(echo "scale=2; ($valor_actual / $valor_total) * 100" | bc | cut -d'.' -f1)
         echo porcentaje = $porcentaje
@@ -44,4 +41,6 @@ jobs:
         if [ "$total" -lt 70 ]; then
           echo "Error: La cobertura de código es inferior al 70% (actual: $total%)."
           exit 1
+        else
+          echo "Covertura de codigo exitosa. "
         fi
