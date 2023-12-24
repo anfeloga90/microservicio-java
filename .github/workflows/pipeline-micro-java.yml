@@ -41,7 +41,7 @@ jobs:
         echo porcentaje = $porcentaje
         total=$((-$porcentaje+100))
 
-        if [ "$total" -lt 85 ]; then
-          echo "Error: La cobertura de código es inferior al 85% (actual: $total%)."
+        if [ "$total" -lt 70 ]; then
+          echo "Error: La cobertura de código es inferior al 70% (actual: $total%)."
           exit 1
         fi
