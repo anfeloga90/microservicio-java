@@ -33,7 +33,7 @@ jobs:
 
     - name: Check Code Coverage
       run: |
-        COVERAGE=$(sed -n 's/.*<counter type="INSTRUCTION" covered="\([0-9]*\)".*/\1/p' build/reports/jacoco/test/jacocoTestReport.xml)
+        COVERAGE=$(cat build/jacocoHtml/index.html | grep -oP 'Total</td><td class="bar">[^<]+' | grep -oP '[0-9]+')
         if [ "$COVERAGE" -lt 85 ]; then
           echo "Error: La cobertura de código es inferior al 85% (actual: $COVERAGE%)."
           exit 1
