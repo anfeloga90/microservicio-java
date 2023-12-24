@@ -11,3 +11,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
+    - name: Build
+      run : |
+      chmod +x gradlew
+      ./gradlew build
+      ls -ltrh
