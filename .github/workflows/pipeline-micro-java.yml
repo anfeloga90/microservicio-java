@@ -36,8 +36,8 @@ jobs:
         COVERAGE=$(cat build/jacocoHtml/index.html | grep -oP 'Total</td><td class="bar">[^<]+' | grep -oP '[0-9]+')
         echo COVERAGE=$COVERAGE
         # Extraer el valor actual y total
-        valor_actual=$(echo "$COVERAGE" | cut -d' ' -f1)
-        valor_total=$(echo "$COVERAGE" | cut -d' ' -f3)
+        valor_actual=$(echo "$COVERAGE" | cut -d'=' -f2 | cut -d' ' -f1)
+        valor_total=$(echo "$COVERAGE" | cut -d'=' -f2 | cut -d' ' -f2)
 
         # Calcular el porcentaje
         porcentaje=$(echo "scale=2; ($valor_actual / $valor_total) * 100" | bc)
