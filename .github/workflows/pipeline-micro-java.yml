@@ -33,7 +33,7 @@ jobs:
 
     - name: Check Code Coverage
       run: |
-        COVERAGE=$(cat build/jacocoHtml/index.html | grep -oP 'Total</td><td class="bar">[^<]+' | grep -oP '[0-9]+')
+        COVERAGE=$(cat build/jacocoHtml/index.html | grep -oP '</td><td class="ctr2">[^<]+' | grep -oP '[0-9]+')
         echo COVERAGE=$COVERAGE
         if [ "$COVERAGE" -lt 85 ]; then
           echo "Error: La cobertura de código es inferior al 85% (actual: $COVERAGE%)."
