@@ -17,7 +17,16 @@ jobs:
         chmod +x gradlew
         ./gradlew build
         ls -ltrh
-        
-    - name: Run Unit Tests
+
+    - name: Run Unit Tests and Check Coverage
       run: |
         ./gradlew test
+        ./gradlew jacocoTestReport
+
+    - name: Check Code Coverage
+      run: |
+        COVERAGE=$(grep -Po "(?<=<counter type=\"INSTRUCTION\" covered=\")[^\"]+" build/reports/jacoco/test/jacocoTestReport.xml")
+        if [ $(echo "$COVERAGE >= 85" | bc -l) -eq 0 ]; then
+          echo "Error: La cobertura de código es inferior al 85% (actual: $COVERAGE%)."
+          exit 1
+        fi
