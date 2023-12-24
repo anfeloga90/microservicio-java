@@ -37,10 +37,11 @@ jobs:
         echo valor_actual = $valor_actual
         echo valor_total = $valor_total
         # Calcular el porcentaje
-        porcentaje=-$(echo "scale=2; ($valor_actual / $valor_total) * 100" | bc | cut -d'.' -f1)+100
-        echo porcentaje = -$porcentaje
+        porcentaje=$(echo "scale=2; ($valor_actual / $valor_total) * 100" | bc | cut -d'.' -f1)
+        echo porcentaje = $porcentaje
+        total=echo $((-$porcentaje+100))
 
-        if [ "$porcentaje" -lt 85 ]; then
-          echo "Error: La cobertura de código es inferior al 85% (actual: $porcentaje%)."
+        if [ "$total" -lt 85 ]; then
+          echo "Error: La cobertura de código es inferior al 85% (actual: $total%)."
           exit 1
         fi
