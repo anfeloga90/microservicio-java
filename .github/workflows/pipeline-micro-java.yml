@@ -25,6 +25,8 @@ jobs:
         ls -ltrh
         ls -ltrh build
         ls -ltrh build/reports/jacoco/test/
+        ls -ltrh build/reports/jacoco/test/html
+        cat build/reports/jacoco/test/jacocoTestReport.xml
 
     - name: Check Code Coverage
       run: |
