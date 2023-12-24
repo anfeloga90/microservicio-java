@@ -36,7 +36,7 @@ jobs:
         valor_total=$(echo $COVERAGE | cut -d'=' -f2 | cut -d' ' -f2)
 
         # Calcular el porcentaje
-        porcentaje=$(echo "scale=2; ($valor_actual / $valor_total) * 100" | bc)
+        porcentaje=$(echo "scale=0; ($valor_actual / $valor_total) * 100" | bc | cut -d'.' -f1)
         echo porcentaje = $porcentaje
 
         if [ "$porcentaje" -lt 85 ]; then
