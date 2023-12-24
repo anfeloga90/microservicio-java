@@ -42,10 +42,11 @@ jobs:
           echo "Error: La cobertura de código es inferior al 70% (actual: $total%)."
           exit 1
         else
-          echo "Covertura de codigo exitosa. "
+          echo "Covertura de codigo exitosa."
         fi
 
     - name: Sonar cloud Analisis
       run: |
         chmod +x gradlew
         ./gradlew build sonar -Dsonar.token=${{ secrets.TOKEN_SONARCLOUD }}
+
