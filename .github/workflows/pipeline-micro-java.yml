@@ -25,8 +25,9 @@ jobs:
         ls -ltrh
         ls -ltrh build
         ls -ltrh build/reports/jacoco/test/
-        ls -ltrh build/reports/jacoco/test/jacocoHtml
+        ls -ltrh build/jacocoHtml
         cat build/reports/jacoco/test/jacocoTestReport.xml
+        echo -----
         echo -----
         cat build/reports/jacoco/test/jacocoHtml/index.html
 
