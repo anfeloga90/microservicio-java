@@ -45,6 +45,13 @@ jobs:
           echo "Covertura de codigo exitosa. "
         fi
 
+  Sonar:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
     - name: Sonar cloud Analisis
       run: |
         chmod +x gradlew
