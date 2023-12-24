@@ -27,6 +27,11 @@ jobs:
         echo -----
         cat build/jacocoHtml/index.html
 
+  Coverage:
+
+    runs-on: ubuntu-latest
+
+    steps:
     - name: Check Code Coverage
       run: |
         COVERAGE=$(cat build/jacocoHtml/index.html | grep -oP 'Total</td><td class="bar">[^<]+' | grep -oP '[0-9]+')
