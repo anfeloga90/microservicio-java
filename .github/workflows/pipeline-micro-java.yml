@@ -23,11 +23,12 @@ jobs:
         ./gradlew test
         ./gradlew build jacocoTestReport
         ls -ltrh
+        ls -ltrh build
 
     - name: Check Code Coverage
       run: |
-        COVERAGE=$(grep -Po "(?<=<counter type=\"INSTRUCTION\" covered=\")[^\"]+" build/reports/jacoco/test/jacocoTestReport.xml")
-        if [ "$(echo "$COVERAGE >= 85" | bc -l)" -eq 0 ]; then
+        COVERAGE=$(sed -n 's/.*<counter type="INSTRUCTION" covered="\([0-9]*\)".*/\1/p' build/reports/jacoco/test/jacocoTestReport.xml)
+        if [ "$COVERAGE" -lt 85 ]; then
           echo "Error: La cobertura de código es inferior al 85% (actual: $COVERAGE%)."
           exit 1
         fi
