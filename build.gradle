@@ -26,5 +26,6 @@ jacocoTestReport {
 	reports {
 		xml.enabled true
 		html.enabled true
+		html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
 	}
 }
