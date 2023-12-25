@@ -12,11 +12,12 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    # - name: Build
-    #   run: |
-    #     chmod +x gradlew
-    #     ./gradlew build
-    #     ls -ltrh
+    - name: Build
+      run: |
+        chmod +x gradlew
+        ./gradlew build
+        ls -ltrh
+        find . -name ".jar"
 
     # - name: Run Unit Tests and Check Coverage
     #   run: |
@@ -59,5 +60,6 @@ jobs:
 
     - name: docker build
       run: |
-        docker build --tag microservicios-java:
+        docker build --tag microservicios-java:latest .
         docker images
+        docker push andresfelipe9002/microservicios-java:latest
