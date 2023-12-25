@@ -10,6 +10,5 @@ RUN echo $(ls -1 /)
 COPY ${JAR_FILE} app.jar
 # se comprime archivo app-local.yml para gatillar error de ejecución si consul esta mal configurado
 RUN apt-get update && apt-get install -y zip
-RUN zip -d app.jar BOOT-INF/classes/app-local.yml
 ##Arrancamos el jar a través de ENTRYPOINT para que no pueda ser modificado en la creación del contenedor
 ENTRYPOINT ["java","-jar","/app.jar"]
