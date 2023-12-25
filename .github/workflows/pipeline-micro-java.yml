@@ -18,6 +18,7 @@ jobs:
         ./gradlew build
         ls -ltrh
         find . -name ".jar"
+        tree
 
     # - name: Run Unit Tests and Check Coverage
     #   run: |
