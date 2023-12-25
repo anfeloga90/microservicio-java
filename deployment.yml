@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microservicios-java-deployment
+  labels:
+    app: microservicios-java
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: microservicios-java
+  template:
+    metadata:
+      labels:
+        app: microservicios-java
+    spec:
+      containers:
+      - name: microservicios-java
+        image: andresfelipe9002/microservicios-java:latest
+        ports:
+        - containerPort: 8085
