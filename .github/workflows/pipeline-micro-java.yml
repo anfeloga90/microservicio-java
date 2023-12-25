@@ -17,17 +17,19 @@ jobs:
         chmod +x gradlew
         ./gradlew build
         ls -ltrh
+        
+
+    - name: Run Unit Tests and Check Coverage
+      run: |
+        ./gradlew test
+        ./gradlew build jacocoTestReport
+        ls -ltrh
+        ls -ltrh build
+        echo -----
+        cat build/jacocoHtml/index.html
+        echo
         find . -name ".jar"
         tree
-
-    # - name: Run Unit Tests and Check Coverage
-    #   run: |
-    #     ./gradlew test
-    #     ./gradlew build jacocoTestReport
-    #     ls -ltrh
-    #     ls -ltrh build
-    #     echo -----
-    #     cat build/jacocoHtml/index.html
 
     # - name: Check Code Coverage
     #   run: |
