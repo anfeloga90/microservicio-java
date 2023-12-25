@@ -44,7 +44,5 @@ sonar {
 }
 
 jar {
-    manifest {
-        attributes 'Main-Class': 'com.example.testingweb'
-    }
+	enabled = true
 }
