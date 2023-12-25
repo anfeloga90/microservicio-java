@@ -67,8 +67,6 @@ jobs:
         ls -ltrh build/libs/
         docker build --tag microservicios-java:latest .
         docker images
-        sleep 2
-        docker push andresfelipe9002/microservicios-java:latest
     
     - name: docker push
       run: |
