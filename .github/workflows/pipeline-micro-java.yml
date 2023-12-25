@@ -66,3 +66,11 @@ jobs:
     - name: docker push
       run: |
         docker push andresfelipe9002/microservicios-java
+  
+  deploy:
+    runs-on: self-hosted
+    needs: build
+    steps:
+      - name: deploy to minikube
+        run: | 
+          kubectl apply -f deployment.yml
