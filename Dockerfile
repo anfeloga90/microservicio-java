@@ -2,7 +2,7 @@ FROM openjdk:11-jre-slim-buster
 # Default to UTF-8 file.encoding
 ENV LANG C.UTF-8
 ##Exponemos el Puerto 8080
-EXPOSE 8085
+EXPOSE 8080
 ## Creamos la variable JAR_FILE con el path del jar generado
 ARG JAR_FILE=build/libs/testing-web-0.0.1-SNAPSHOT.jar
 RUN echo $(ls -1 /)
