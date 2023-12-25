@@ -96,4 +96,4 @@ jobs:
           wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.4.3.tgz
           tar -xzf apache-jmeter-5.4.3.tgz
           ls -ltrh
-          ./apache-jmeter-5.4.3/bin/jmeter -n -t path/to/your/script.jmx
+          ./apache-jmeter-5.4.3/bin/jmeter -n -t script.jmx
