@@ -4,7 +4,7 @@ ENV LANG C.UTF-8
 ##Exponemos el Puerto 8080
 EXPOSE 8080
 ## Creamos la variable JAR_FILE con el path del jar generado
-ARG JAR_FILE=build/libs/*.jar
+ARG JAR_FILE=build/libs/testing-web-0.0.1-SNAPSHOT.jar
 RUN echo $(ls -1 /)
 ## Copiamos el jar al contenedor
 COPY ${JAR_FILE} app.jar

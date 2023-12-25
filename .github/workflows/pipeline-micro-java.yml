@@ -63,7 +63,13 @@ jobs:
 
     - name: docker build
       run: |
+        chmod 777 /build/libs/testing-web-0.0.1-SNAPSHOT.jar
+        ls -ltrh /build/libs/
         docker build --tag microservicios-java:latest .
         docker images
         sleep 2
         docker push andresfelipe9002/microservicios-java:latest
+    
+    - name: docker push
+      run: |
+        docker push andresfelipe9002/microservicios-java
