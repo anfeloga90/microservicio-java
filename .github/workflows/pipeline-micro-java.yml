@@ -72,7 +72,28 @@ jobs:
     needs: build
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: deploy to minikube
         run: | 
           kubectl apply -f deployment.yml
+
+  jmeter:
+    runs-on: ubuntu-latest
+    needs: deploy
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+
+      - name: Run JMeter Test
+        run: |
+          wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.4.3.tgz
+          tar -xzf apache-jmeter-5.4.3.tgz
+          ls -ltrh
+          ./apache-jmeter-5.4.3/bin/jmeter -n -t path/to/your/script.jmx
