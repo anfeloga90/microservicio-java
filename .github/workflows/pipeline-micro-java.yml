@@ -25,29 +25,29 @@ jobs:
         ./gradlew build jacocoTestReport
         ls -ltrh
 
-    # - name: Check Code Coverage
-    #   run: |
-    #     COVERAGE=$(cat build/jacocoHtml/index.html | grep -oP 'Total</td><td class="bar">[^<]+' | grep -oP '[0-9]+')
-    #     # Extraer el valor actual y total
-    #     valor_actual=$(echo $COVERAGE | cut -d'=' -f2 | cut -d' ' -f1)
-    #     valor_total=$(echo $COVERAGE | cut -d'=' -f2 | cut -d' ' -f2)
-    #     # Calcular el porcentaje
-    #     porcentaje=$(echo "scale=2; ($valor_actual / $valor_total) * 100" | bc | cut -d'.' -f1)
-    #     echo porcentaje = $porcentaje
-    #     total=$((-$porcentaje+100))
+    - name: Check Code Coverage
+      run: |
+        COVERAGE=$(cat build/jacocoHtml/index.html | grep -oP 'Total</td><td class="bar">[^<]+' | grep -oP '[0-9]+')
+        # Extraer el valor actual y total
+        valor_actual=$(echo $COVERAGE | cut -d'=' -f2 | cut -d' ' -f1)
+        valor_total=$(echo $COVERAGE | cut -d'=' -f2 | cut -d' ' -f2)
+        # Calcular el porcentaje
+        porcentaje=$(echo "scale=2; ($valor_actual / $valor_total) * 100" | bc | cut -d'.' -f1)
+        echo porcentaje = $porcentaje
+        total=$((-$porcentaje+100))
 
-    #     if [ "$total" -lt 70 ]; then
-    #       echo "Error: La cobertura de código es inferior al 70% (actual: $total%)."
-    #       exit 1
-    #     else
-    #       echo "Covertura de codigo exitosa. "
-    #     fi
+        if [ "$total" -lt 70 ]; then
+          echo "Error: La cobertura de código es inferior al 70% (actual: $total%)."
+          exit 1
+        else
+          echo "Covertura de codigo exitosa. "
+        fi
 
-    # - name: Sonar cloud Analisis
-    #   run: |
-    #     echo "inicio de analisis sonar.   "
-    #     chmod +x gradlew
-    #     ./gradlew build sonar -Dsonar.token=${{ secrets.TOKEN_SONARCLOUD }}
+    - name: Sonar cloud Analisis
+      run: |
+        echo "inicio de analisis sonar.   "
+        chmod +x gradlew
+        ./gradlew build sonar -Dsonar.token=${{ secrets.TOKEN_SONARCLOUD }}
 
     - name: docker login
       uses: docker/login-action@v2.2.0
