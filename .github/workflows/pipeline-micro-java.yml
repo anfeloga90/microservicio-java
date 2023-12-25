@@ -24,12 +24,6 @@ jobs:
         ./gradlew test
         ./gradlew build jacocoTestReport
         ls -ltrh
-        ls -ltrh build
-        echo -----
-        cat build/jacocoHtml/index.html
-        echo
-        find . -name ".jar"
-        tree
 
     # - name: Check Code Coverage
     #   run: |
@@ -66,6 +60,7 @@ jobs:
         chmod 777 build/libs/testing-web-0.0.1-SNAPSHOT.jar
         ls -ltrh build/libs/
         docker build --tag microservicios-java:latest .
+        docker build --tag andresfelipe9002/microservicios-java:latest .
         docker images
     
     - name: docker push
